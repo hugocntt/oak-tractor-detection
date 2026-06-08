@@ -58,7 +58,7 @@ If it hangs indefinitely, check:
 - Pixhawk is powered on (LEDs flashing)
 - 3-wire UART cable is connected (TELEM2 on Pixhawk → GPIO pins 8, 10, 6 on Pi)
 - TX/RX are not swapped — if it hangs, swap yellow and blue wires and try again
-- Pixhawk parameters are set: `SERIAL2_PROTOCOL=2`, `SERIAL2_BAUD=57`, `SYSID_MYGCS=255`
+- Pixhawk parameters are set: `SERIAL2_PROTOCOL=2`, `SERIAL2_BAUD=921600`, `SYSID_MYGCS=255`
 
 ---
 
@@ -67,8 +67,7 @@ If it hangs indefinitely, check:
 Useful for testing the camera and YOLO detection without the tractor.
 
 ```bash
-cd ~/Desktop/smart_detector_2
-python3 mission_controller_2.py --no-bridge
+python3 mission_controller.py --no-bridge
 ```
 
 **Expected output:**
@@ -76,7 +75,7 @@ python3 mission_controller_2.py --no-bridge
 Downloading yolov6-nano from Luxonis model zoo (first run only)...
 Connected to OAK-4-PRO-W | USB: UNKNOWN
 Model: yolov6-nano (running on Myriad X VPU)
-Confidence threshold: 0.65
+Confidence threshold: 0.80
 Press 'q' to quit.
 
 [ GO ]         objects=0  obstacles=0  closest=999.0m (none)  fps=31
@@ -99,8 +98,7 @@ Press `q` in the video window to quit.
 Only run this when the Pixhawk heartbeat test (Step 3) has confirmed a connection.
 
 ```bash
-cd ~/Desktop/smart_detector_2
-python3 mission_controller_2.py
+python3 mission_controller.py
 ```
 
 **Expected output:**
@@ -135,7 +133,7 @@ Press `Ctrl+C` to stop the pipeline cleanly.
 **The YOLO model is cached after first download.** Subsequent runs work offline — 
 no internet needed. Only the very first run requires a WiFi or hotspot connection.
 
-**Baud rate:** The Pixhawk TELEM2 port is configured at 57600. The Pi connects at
+**Baud rate:** The Pixhawk TELEM2 port is configured at 921600. The Pi connects at
 the same rate. Do not change `SERIAL2_BAUD` in QGroundControl without also
 updating `BAUD_RATE` in `mavlink_bridge_2.py`.
 
@@ -147,8 +145,8 @@ survive a reboot. Run it every session before starting the detector. To make it
 permanent, ask for the `/etc/dhcpcd.conf` setup instructions.
 
 **Tuning the stop sensitivity:**
-- `EMERGENCY_M` in `smart_detector_2.py` — depth trigger distance (default 1.5m)
+- `EMERGENCY_M` in `smart_detector.py` — depth trigger distance (default 1.5m)
 - `DANGER_M` — YOLO trigger distance (default 3.0m)
 - `RESUME_CLEAR_FRAMES` — consecutive clear frames before GO (default 20, ~0.6s)
 - `MIN_VALID_FRAC` — minimum valid depth pixel fraction to trust a clear reading (default 0.10)
-- `RESUME_DELAY_S` in `mavlink_bridge_2.py` — additional bridge-side grace before releasing override (default 2.0s)
+- `RESUME_DELAY_S` in `mavlink_bridge.py` — additional bridge-side grace before releasing override (default 2.0s)
