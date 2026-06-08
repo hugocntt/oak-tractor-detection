@@ -65,7 +65,7 @@ mission on its own.
                                     ▼
  ┌─────────────────────────────────────────────────────────────────┐
  │                    Host: mavlink_bridge.py                      │
- │   • Drains queue at 50 Hz (only the latest result matters)      │
+ │   • Drains queue at 10 Hz (only the latest result matters)      │
  │   • STOP → ch3 override = 1686 µs (neutral, holds position)     │
  │   • GO   → ch3 override = 0     (release, ArduRover resumes)    │
  │   • 2-second clearance grace before resuming after a STOP       │
@@ -213,7 +213,7 @@ All tuneables live at the top of each module.
 |---------------------------|---------------|-----------------------------------------------|
 | `MODEL_NAME`              | `yolov6-nano` | Model fetched from the Luxonis zoo            |
 | `FPS`                     | 60            | Camera frame rate                             |
-| `CONFIDENCE_THRESHOLD`    | 0.65          | Minimum YOLO confidence                       |
+| `CONFIDENCE_THRESHOLD`    | 0.80          | Minimum YOLO confidence                       |
 | `DEPTH_MIN_MM` / `MAX_MM` | 300 / 10000   | Depth clip range                              |
 | `EMERGENCY_M`             | 1.5           | Depth fallback STOP threshold (m)             |
 | `DANGER_M`                | 3.0           | YOLO STOP threshold (m)                       |
@@ -225,7 +225,7 @@ All tuneables live at the top of each module.
 
 | Constant         | Default | Meaning                                          |
 |------------------|---------|--------------------------------------------------|
-| `OVERRIDE_HZ`    | 50      | Override resend rate (every 20 ms)               |
+| `OVERRIDE_HZ`    | 10      | Override resend rate (every 20 ms)               |
 | `RESUME_DELAY_S` | 2.0     | Bridge-side clearance grace before releasing override |
 | `PWM_STOP`       | 1686    | Channel 3 PWM (µs) for neutral throttle          |
 | `PWM_RELEASE`    | 0       | Sentinel that releases the override              |
