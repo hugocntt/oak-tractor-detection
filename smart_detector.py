@@ -35,7 +35,7 @@ MODEL_NAME = "yolov6-nano"          # auto-downloaded from Luxonis model zoo
 FPS = 60                            # camera frame rate
 TRACK_SMOOTH = 0.4                  # bbox EMA — lower = smoother but more lag (0–1)
 TRACK_MAX_MISS = 6                  # frames to keep a track alive without a detection
-CONFIDENCE_THRESHOLD = 0.65          # min confidence to count a detection
+CONFIDENCE_THRESHOLD = 0.80          # min confidence to count a detection
 DEPTH_MIN_MM = 300                  # ignore closer than 30cm
 DEPTH_MAX_MM = 10000                # ignore further than 10m
 
