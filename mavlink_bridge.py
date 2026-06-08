@@ -17,7 +17,7 @@ from pymavlink import mavutil
 from detection_result import DetectionResult
 
 SERIAL_PORT   = "/dev/ttyAMA0"   # UART port to Pixhawk (change to /dev/ttyUSB0 if using USB)
-BAUD_RATE     = 57600
+BAUD_RATE     = 921600
 OVERRIDE_HZ   = 10               # 10 Hz = every 100 ms
 RESUME_DELAY_S = 2.0             # seconds path must be clear before resuming
 PWM_STOP      = 1686             # throttle neutral — tractor holds position
