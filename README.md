@@ -288,6 +288,9 @@ DetectionResult(
 
 ## Videos
 
+- Zeat autonomous tractor outdoor testing video playlist: https://www.youtube.com/playlist?list=PL_1IXr3l0lTnF9Sp2oXOygxrLtBe-OzXQ
+- Zeat autonomous tractor indoor testing video playlist: https://www.youtube.com/playlist?list=PL_1IXr3l0lTlDJ3VvA6J6QlxHkFic31Hk
+
 ## License
 
 See [LICENSE](LICENSE).
